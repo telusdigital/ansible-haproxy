@@ -1,0 +1,10 @@
+global
+  daemon
+  maxconn 20000
+  pidfile /var/run/haproxy.pid
+  stats socket /var/run/haproxy.stat mode 600
+  log /dev/log local0
+  log /dev/log local1 notice
+  chroot /var/lib/haproxy
+  user haproxy
+  group haproxy

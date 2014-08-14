@@ -1,0 +1,22 @@
+---
+- name: Upload Config | monit | haproxy
+  template:
+    src: etc/monit/conf.d/haproxy
+    dest: /etc/monit/conf.d/haproxy
+  notify: Reload Service | monit
+  tags:
+    - monitoring
+    - services
+    - haproxy
+    - monit
+
+- name: Trigger All Callbacks
+  meta: flush_handlers
+
+- name: Confirm Monitoring | haproxy
+  monit:
+    state: present
+    name: haproxy
+  tags:
+    - haproxy
+    - monit

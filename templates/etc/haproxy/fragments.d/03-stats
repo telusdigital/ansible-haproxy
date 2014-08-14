@@ -1,0 +1,4 @@
+  stats enable
+  stats hide-version
+  stats uri /status
+  stats auth metrics:***REMOVED***

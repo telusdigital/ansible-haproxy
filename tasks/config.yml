@@ -1,0 +1,64 @@
+---
+- name: Directory Exists | /etc/haproxy/fragments.d
+  file:
+    state: directory
+    path: /etc/haproxy/fragments.d
+    owner: haproxy
+    group: wcadmin
+    mode: 0775
+  tags:
+    - directory-structure
+    - configuration
+    - haproxy
+
+- name: Upload Config Fragments | haproxy | global
+  template:
+    src: etc/haproxy/fragments.d/00-global
+    dest: /etc/haproxy/fragments.d/00-global
+  notify: Reload Service | haproxy
+  tags:
+    - configuration
+    - fragment-configuration
+    - haproxy
+
+- name: Upload Config Fragments | haproxy | defaults
+  template:
+    src: etc/haproxy/fragments.d/01-defaults
+    dest: /etc/haproxy/fragments.d/01-defaults
+  notify: Reload Service | haproxy
+  tags:
+    - configuration
+    - fragment-configuration
+    - haproxy
+
+- name: Upload Config Fragments | haproxy | error handling
+  template:
+    src: etc/haproxy/fragments.d/02-error-handling
+    dest: /etc/haproxy/fragments.d/02-error-handling
+  notify: Reload Service | haproxy
+  tags:
+    - configuration
+    - fragment-configuration
+    - haproxy
+  when: haproxy_handles_errors
+
+- name: Upload Config Fragments | haproxy | stats
+  template:
+    src: etc/haproxy/fragments.d/03-stats
+    dest: /etc/haproxy/fragments.d/03-stats
+  notify: Reload Service | haproxy
+  tags:
+    - configuration
+    - fragment-configuration
+    - haproxy
+  when: haproxy_stats_enabled
+
+- name: Assemble Config Fragments | haproxy
+  assemble:
+    src: /etc/haproxy/fragments.d
+    dest: /etc/haproxy/haproxy.cfg
+    delimiter: '### START FRAGMENT ###'
+  tags:
+    - configuration
+    - fragment-configuration
+    - haproxy

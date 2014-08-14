@@ -1,0 +1,18 @@
+defaults
+  log global              # Defer to global section for logging configuration.
+  mode http               # The instance will work in HTTP mode (vs TCP).
+  option httplog          # Enable logging of HTTP request, session state and timers.
+  option dontlognull      # Disable logging of null connections.
+  maxconn 19500           # Limits the sockets to this number of concurrent connections.
+  timeout client 60s      # Set the maximum inactivity time on the client side.
+  timeout server 60s      # Set the maximum inactivity time on the server side.
+  timeout queue  60s      # Set the maximum time to wait in the queue for a connection slot to be free.
+  timeout connect {{ haproxy_assumes_backend_is_dead_after }}s      # Set the maximum time to wait for a connection attempt to a server to succeed.
+{% if haproxy_mitigates_ddos_attacks %}
+  timeout http-request 5s # Set the maximum allowed time to wait for a complete HTTP request.
+{% endif %}
+  option httpclose        # Enable passive HTTP connection closing.
+  option abortonclose     # Enable early dropping of aborted requests pending in queues.
+  balance roundrobin      # Define the load balancing algorithm to be used in a backend.
+  option forwardfor       # Enable insertion of the X-Forwarded-For header to requests sent to servers
+  retries 2               # Set the number of retries to perform on a server after a connection failure

@@ -1,0 +1,12 @@
+---
+- name: Install Packages | apt
+  apt:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - haproxy
+  tags:
+    - apt
+    - packages
+    - install
+    - haproxy
