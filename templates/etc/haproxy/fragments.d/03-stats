@@ -1,4 +1,4 @@
   stats enable
   stats hide-version
-  stats uri /stats
-  stats auth metrics:***REMOVED***
+  stats uri {{ haproxy_stats_uri }}
+  stats auth {{ haproxy_stats_user }}:{{ haproxy_stats_password }}

@@ -2,7 +2,6 @@
 haproxy_user: haproxy
 haproxy_group: haproxy
 
-haproxy_stats_enabled: yes
 haproxy_error_handling_enabled: yes
 haproxy_attack_mitigation_enabled: no
 haproxy_assumes_backend_is_dead_after: 4
@@ -12,3 +11,8 @@ haproxy_pidfile_path: "{{ haproxy_runtime_data_root }}/haproxy.pid"
 haproxy_stats_socket_path: "{{ haproxy_runtime_data_root }}/stats.sock"
 
 haproxy_chroot_path: /var/lib/haproxy
+
+haproxy_stats_enabled: yes
+haproxy_stats_uri: /stats
+haproxy_stats_user: metrics
+haproxy_stats_password: ***REMOVED***
