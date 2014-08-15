@@ -1,7 +1,7 @@
 global
   daemon
   maxconn 20000
-  pidfile /var/run/haproxy.pid
+  pidfile {{ haproxy_pidfile_path }}
   stats socket /var/run/haproxy.stat mode 600
   log /dev/log local0
   log /dev/log local1 notice
