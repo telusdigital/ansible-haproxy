@@ -9,3 +9,8 @@
     - software-installation
     - using-apt
     - haproxy
+
+- name: Service Stopped | haproxy
+  service:
+    state: stopped
+    name: haproxy
