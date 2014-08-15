@@ -1,9 +1,21 @@
 ---
+- name: "Directory Exists | {{ haproxy_runtime_data_root }}"
+  file:
+    state: directory
+    path: "{{ haproxy_runtime_data_root }}"
+    owner: "{{ haproxy_user }}"
+    group: wcadmin
+    mode: 0775
+  tags:
+    - directory-structure
+    - runtime-data
+    - haproxy
+
 - name: Directory Exists | /etc/haproxy/fragments.d
   file:
     state: directory
     path: /etc/haproxy/fragments.d
-    owner: haproxy
+    owner: "{{ haproxy_user }}"
     group: wcadmin
     mode: 0775
   tags:
@@ -40,7 +52,7 @@
     - configuration
     - fragment-configuration
     - haproxy
-  when: haproxy_handles_errors
+  when: haproxy_error_handling_enabled
 
 - name: Upload Config Fragments | haproxy | stats
   template:

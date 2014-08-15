@@ -8,7 +8,7 @@ defaults
   timeout server 60s      # Set the maximum inactivity time on the server side.
   timeout queue  60s      # Set the maximum time to wait in the queue for a connection slot to be free.
   timeout connect {{ haproxy_assumes_backend_is_dead_after }}s      # Set the maximum time to wait for a connection attempt to a server to succeed.
-{% if haproxy_mitigates_ddos_attacks %}
+{% if haproxy_attack_mitigation_enabled %}
   timeout http-request 5s # Set the maximum allowed time to wait for a complete HTTP request.
 {% endif %}
   option httpclose        # Enable passive HTTP connection closing.

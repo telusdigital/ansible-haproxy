@@ -6,7 +6,6 @@
   with_items:
     - haproxy
   tags:
-    - apt
-    - packages
-    - install
+    - software-installation
+    - using-apt
     - haproxy
