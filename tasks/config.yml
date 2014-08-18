@@ -1,4 +1,13 @@
 ---
+- name: Enable Service | haproxy
+  lineinfile:
+    state: present
+    dest: /etc/default/haproxy
+    regexp: 'ENABLED\='
+    line: 'ENABLED=1'
+  tags:
+    - haproxy
+
 - name: "Directory Exists | {{ haproxy_runtime_data_root }}"
   file:
     state: directory
