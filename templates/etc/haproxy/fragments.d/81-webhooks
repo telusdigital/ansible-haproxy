@@ -1,0 +1,6 @@
+frontend webhook-in
+  bind :81
+  default_backend deployment
+
+backend deployment
+  server application-deployment application{%if environment_tier in ['staging', 'productin'] %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.teluswebteam.com:81
