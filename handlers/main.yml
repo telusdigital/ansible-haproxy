@@ -1,8 +1,4 @@
 ---
-- name: Update Package Cache
-  apt:
-    update_cache: yes
-
 - name: Reload Service | monit
   command: monit reload
 
