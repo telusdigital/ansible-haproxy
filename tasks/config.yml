@@ -74,6 +74,17 @@
     - haproxy
   when: haproxy_stats_enabled
 
+- name: Upload Config Fragments | haproxy | application
+  template:
+    src: etc/haproxy/fragments.d/50-application
+    dest: /etc/haproxy/fragments.d/50-application
+  notify: Reload Service | haproxy
+  tags:
+    - configuration
+    - fragment-configuration
+    - haproxy
+  when: haproxy_standard_configuration
+
 - name: Upload Config Fragments | haproxy | webhooks
   template:
     src: etc/haproxy/fragments.d/81-webhooks

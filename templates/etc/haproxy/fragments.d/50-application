@@ -1,0 +1,14 @@
+frontend http-in
+  bind :80
+  default_backend {{ project }}-application
+
+backend localhost
+  server local 127.0.0.1
+
+backend {{ project }}-application
+{% if environment_tier in ['staging', 'production'] %}
+  server application-load-balancer application.{{ project }}-{{ environment_tier }}.teluswebteam.com
+  server application application-direct.{{ project }}-{{ environment_tier }}.teluswebteam.com disabled
+{% else %}
+  server application application.{{ project }}-{{ environment_tier }}.teluswebteam.com
+{% endif %}
