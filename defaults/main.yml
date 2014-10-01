@@ -13,7 +13,7 @@ haproxy_stats_socket_path: "{{ haproxy_runtime_root }}/stats.sock"
 haproxy_chroot_path: /var/lib/haproxy
 
 haproxy_standard_configuration: yes
-haproxy_webhook_passthrough_enabled: no
+haproxy_autodeploy_passthrough_enabled: no
 
 haproxy_stats_enabled: yes
 haproxy_stats_uri: /stats

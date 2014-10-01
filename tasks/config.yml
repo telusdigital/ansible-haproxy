@@ -85,16 +85,16 @@
     - haproxy
   when: haproxy_standard_configuration
 
-- name: Upload Config Fragments | haproxy | webhooks
+- name: Upload Config Fragments | haproxy | deployment
   template:
-    src: etc/haproxy/fragments.d/81-webhooks
-    dest: /etc/haproxy/fragments.d/81-webhooks
+    src: etc/haproxy/fragments.d/81-deployment
+    dest: /etc/haproxy/fragments.d/81-deployment
   notify: Reload Service | haproxy
   tags:
     - configuration
     - fragment-configuration
     - haproxy
-  when: haproxy_webhook_passthrough_enabled
+  when: haproxy_autodeploy_passthrough_enabled
 
 - name: Assemble Config Fragments | haproxy
   assemble:
