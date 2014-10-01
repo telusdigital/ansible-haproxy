@@ -1,0 +1,5 @@
+---
+- name: Cleanup
+  file:
+    state: absent
+    path: /etc/haproxy/fragments.d/81-webhooks
