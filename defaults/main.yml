@@ -19,3 +19,6 @@ haproxy_stats_enabled: yes
 haproxy_stats_uri: /stats
 haproxy_stats_user: metrics
 haproxy_stats_password: ***REMOVED***
+
+haproxy_ssl_enabled: no
+haproxy_ssl_certificate_path: /data/www/ssl.crt

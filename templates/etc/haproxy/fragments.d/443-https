@@ -1,0 +1,3 @@
+frontend https-in
+  bind :443 ssl crt {{ haproxy_ssl_certificate_path }}
+  default_backend {{ project }}-application

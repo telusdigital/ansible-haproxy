@@ -96,6 +96,17 @@
     - haproxy
   when: haproxy_autodeploy_passthrough_enabled
 
+- name: Upload Config Fragments | haproxy | https
+  template:
+    src: etc/haproxy/fragments.d/443-https
+    dest: /etc/haproxy/fragments.d/443-https
+  when: haproxy_ssl_enabled
+  notify: Reload Service | haproxy
+  tags:
+    - configuration
+    - fragment-configuration
+    - haproxy
+
 - name: Assemble Config Fragments | haproxy
   assemble:
     src: /etc/haproxy/fragments.d
