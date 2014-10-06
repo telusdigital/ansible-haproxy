@@ -22,3 +22,6 @@ haproxy_stats_password: ***REMOVED***
 
 haproxy_ssl_enabled: no
 haproxy_ssl_certificate_path: /data/www/ssl.crt
+haproxy_ssl_should_degrade_security_to_accomodate_old_browsers: no
+
+haproxy_perfect_forward_secrecy_enabled: no

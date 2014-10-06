@@ -1,3 +1,3 @@
 frontend https-in
-  bind :443 ssl crt {{ haproxy_ssl_certificate_path }}
+  bind :443 ssl crt {{ haproxy_ssl_certificate_path }} {% if haproxy_perfect_forward_secrecy_enabled %}no-tls-tickets{%endif}
   default_backend {{ project }}-application
