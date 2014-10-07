@@ -1,3 +1,4 @@
+{% if haproxy_standard_application %}
 frontend http-in
   bind :80
   default_backend {{ project }}-application
@@ -11,4 +12,5 @@ backend {{ project }}-application
   server application application-direct.{{ project }}-{{ environment_tier }}.teluswebteam.com disabled
 {% else %}
   server application application.{{ project }}-{{ environment_tier }}.teluswebteam.com
+{% endif %}
 {% endif %}
