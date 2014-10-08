@@ -23,11 +23,3 @@
   tags:
     - pidfile
     - service
-
-- name: Confirm Monitoring | haproxy
-  monit:
-    state: present
-    name: haproxy
-  tags:
-    - haproxy
-    - monit
