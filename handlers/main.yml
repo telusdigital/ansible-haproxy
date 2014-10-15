@@ -7,5 +7,6 @@
     state: restarted
     name: haproxy
   tags:
-    - monit
+    - haproxy
+    - using-monit
     - disruptive
