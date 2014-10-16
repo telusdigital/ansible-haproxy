@@ -8,7 +8,7 @@
     - monitoring
     - services
     - haproxy
-    - monit
+    - using-monit
 
 - name: Trigger All Callbacks
   meta: flush_handlers
