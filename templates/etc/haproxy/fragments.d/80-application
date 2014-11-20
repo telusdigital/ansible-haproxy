@@ -2,16 +2,15 @@
 frontend http-in
   bind :80
 
-{% if haproxy_allow_access_to_restricted_paths_from_ips is iterable %}
-{%   for allowed_ip in haproxy_allow_access_to_restricted_paths_from_ips %}
-  acl allowed_ip src {{ allowed_ip }}
-{%   endfor %}
-{% endif %}
-
 {% if haproxy_restricted_paths is iterable %}
 {%   for restricted_path in haproxy_restricted_paths %}
   acl restricted_path path_beg {{ restricted_path }}
 {%   endfor %}
+
+{%   for allowed_ip in haproxy_allow_access_to_restricted_paths_from_ips %}
+  acl allowed_ip src {{ allowed_ip }}
+{%   endfor %}
+
   block if restricted_path !allowed_ip
 {% endif %}
 
