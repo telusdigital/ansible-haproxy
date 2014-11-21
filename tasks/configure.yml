@@ -76,8 +76,8 @@
 
 - name: Upload Config Fragments | haproxy | application
   template:
-    src: etc/haproxy/fragments.d/50-application
-    dest: /etc/haproxy/fragments.d/50-application
+    src: etc/haproxy/fragments.d/80-application
+    dest: /etc/haproxy/fragments.d/80-application
   notify: Reload Service | haproxy
   tags:
     - configuration
