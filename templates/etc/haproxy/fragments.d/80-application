@@ -11,7 +11,7 @@ frontend http-in
   acl allowed_ip src {{ allowed_ip }}
 {%   endfor %}
 
-  block if restricted_path !allowed_ip
+  http-request deny if restricted_path !allowed_ip
 {% endif %}
 
   default_backend {{ project }}-application
