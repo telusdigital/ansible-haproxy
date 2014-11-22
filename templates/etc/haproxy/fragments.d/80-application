@@ -24,7 +24,8 @@ backend {{ project }}-application
   redirect scheme https code 301 if !{ ssl_fc }
 {% endif %}
 {% if environment_tier in ['staging', 'production'] %}
-  server application-load-balancer application.{{ project }}-{{ environment_tier }}.teluswebteam.com
+  server application-load-balancer application.{{ project }}-{{ environment_tier }}.teluswebteam.com{% if haproxy_ssl_enabled %}:80{% endif %}
+  
   server application application-direct.{{ project }}-{{ environment_tier }}.teluswebteam.com disabled
 {% else %}
   server application application.{{ project }}-{{ environment_tier }}.teluswebteam.com{% if haproxy_ssl_enabled %}:80{% endif %}
