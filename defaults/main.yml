@@ -24,6 +24,7 @@ haproxy_ssl_enabled: no
 haproxy_ssl_certificate_path: /data/www/ssl.crt
 haproxy_ssl_ciphers: EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 haproxy_ssl_should_degrade_security_to_accomodate_old_browsers: no
+haproxy_ssl_force: no
 
 haproxy_perfect_forward_secrecy_enabled: no
 haproxy_standard_application: yes
