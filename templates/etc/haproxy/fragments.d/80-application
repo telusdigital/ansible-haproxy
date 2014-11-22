@@ -24,6 +24,6 @@ backend {{ project }}-application
   server application-load-balancer application.{{ project }}-{{ environment_tier }}.teluswebteam.com
   server application application-direct.{{ project }}-{{ environment_tier }}.teluswebteam.com disabled
 {% else %}
-  server application application.{{ project }}-{{ environment_tier }}.teluswebteam.com
+  server application application.{{ project }}-{{ environment_tier }}.teluswebteam.com{% if haproxy_ssl_enabled %}:80{% endif %}
 {% endif %}
 {% endif %}
