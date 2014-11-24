@@ -3,3 +3,5 @@
 - include: install.yml
 - include: monitoring.yml
 - include: configure.yml
+- include: ssl.yml
+  when: haproxy_ssl_enabled
