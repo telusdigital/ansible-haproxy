@@ -6,3 +6,5 @@
   with_items:
     - /etc/haproxy/fragments.d/50-application
     - /etc/haproxy/fragments.d/81-webhooks
+  tags:
+    - haproxy
