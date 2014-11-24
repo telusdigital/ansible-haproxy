@@ -2,5 +2,7 @@
 - name: Cleanup
   file:
     state: absent
-    path: /etc/haproxy/fragments.d/50-application
-    path: /etc/haproxy/fragments.d/81-webhooks
+    path: "{{ item }}"
+  with_items:
+    - /etc/haproxy/fragments.d/50-application
+    - /etc/haproxy/fragments.d/81-webhooks
