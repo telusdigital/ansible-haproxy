@@ -2,7 +2,7 @@
   file:
     path: "{{ haproxy_ssl_certificate_path }}"
     state: directory
-    owner: haproxy
+    owner: "{{ haproxy_user }}"
     mode: 0755
   tags:
     - configuration
@@ -12,7 +12,7 @@
   copy:
     src: "data/www/{{ project if environment_tier in ['staging', 'production'] else 'development' }}.pem"
     dest: "{{ haproxy_ssl_certificate_path }}{{ haproxy_ssl_certificate_name }}"
-    owner: haproxy
+    owner: "{{ haproxy_user }}"
     mode: 0600
   tags:
     - configuration
