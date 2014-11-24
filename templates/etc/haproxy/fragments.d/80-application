@@ -1,6 +1,7 @@
 {% if haproxy_standard_application %}
 frontend http-in
   bind :80
+  reqadd X-Forwarded-Proto:\ http
 
 {% if haproxy_restricted_paths is iterable %}
 {%   for restricted_path in haproxy_restricted_paths %}

@@ -1,6 +1,7 @@
 frontend https-in
   bind :443 ssl crt {{ haproxy_ssl_certificate_path }} {% if haproxy_ssl_ciphers %}ciphers {{ haproxy_ssl_ciphers }}{% endif %} {% if haproxy_perfect_forward_secrecy_enabled %}no-tls-tickets{%endif%}
 
+  reqadd X-Forwarded-Proto:\ https
 {% if haproxy_restricted_paths is iterable %}
 {%   for restricted_path in haproxy_restricted_paths %}
   acl restricted_path path_beg {{ restricted_path }}
