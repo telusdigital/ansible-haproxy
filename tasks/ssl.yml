@@ -10,7 +10,7 @@
 
 - name: Upload SSL Certificate 
   copy:
-    src="data/www/{{ 'production' if environment_tier in ['staging', 'production'] else 'development' }}.pem"
+    src="data/www/{{ project if environment_tier in ['staging', 'production'] else 'development' }}.pem"
     dest="{{ haproxy_ssl_certificate_path }}{{ haproxy_ssl_certificate_name }}"
     owner=haproxy
     mode=0600
