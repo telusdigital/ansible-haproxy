@@ -1,4 +1,4 @@
-- name: "Make sure {{ haproxy_ssl_certificate_path }} exists"
+- name: "Directory Exists | {{ haproxy_ssl_certificate_path }}"
   file:
     path: "{{ haproxy_ssl_certificate_path }}"
     state: directory
