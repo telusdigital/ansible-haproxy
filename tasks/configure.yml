@@ -8,100 +8,35 @@
   tags:
     - haproxy
 
-- name: "Directory Exists | {{ haproxy_runtime_root }}"
+- name: Directories Exists
   file:
     state: directory
-    path: "{{ haproxy_runtime_root }}"
+    path: "{{ item }}"
     owner: "{{ haproxy_user }}"
     group: wcadmin
     mode: 0775
+  with_items:
+    - "{{ haproxy_runtime_root }}"
+    - /etc/haproxy/fragments.d
   tags:
     - directory-structure
     - runtime-data
     - haproxy
 
-- name: Directory Exists | /etc/haproxy/fragments.d
-  file:
-    state: directory
-    path: /etc/haproxy/fragments.d
-    owner: "{{ haproxy_user }}"
-    group: wcadmin
-    mode: 0775
-  tags:
-    - directory-structure
-    - configuration
-    - haproxy
-
-- name: Upload Config Fragments | haproxy | global
+- name: Upload Config Fragments | haproxy
   template:
-    src: etc/haproxy/fragments.d/00-global
-    dest: /etc/haproxy/fragments.d/00-global
+    src: "etc/haproxy/fragments.d/{{ item.path }}"
+    dest: "/etc/haproxy/fragments.d/{{ item.path }}"
   notify: Reload Service | haproxy
-  tags:
-    - configuration
-    - fragment-configuration
-    - haproxy
-
-- name: Upload Config Fragments | haproxy | defaults
-  template:
-    src: etc/haproxy/fragments.d/01-defaults
-    dest: /etc/haproxy/fragments.d/01-defaults
-  notify: Reload Service | haproxy
-  tags:
-    - configuration
-    - fragment-configuration
-    - haproxy
-
-- name: Upload Config Fragments | haproxy | error handling
-  template:
-    src: etc/haproxy/fragments.d/02-error-handling
-    dest: /etc/haproxy/fragments.d/02-error-handling
-  notify: Reload Service | haproxy
-  tags:
-    - configuration
-    - fragment-configuration
-    - haproxy
-  when: haproxy_error_handling_enabled
-
-- name: Upload Config Fragments | haproxy | stats
-  template:
-    src: etc/haproxy/fragments.d/03-stats
-    dest: /etc/haproxy/fragments.d/03-stats
-  notify: Reload Service | haproxy
-  tags:
-    - configuration
-    - fragment-configuration
-    - haproxy
-  when: haproxy_stats_enabled
-
-- name: Upload Config Fragments | haproxy | application
-  template:
-    src: etc/haproxy/fragments.d/80-application
-    dest: /etc/haproxy/fragments.d/80-application
-  notify: Reload Service | haproxy
-  tags:
-    - configuration
-    - fragment-configuration
-    - haproxy
-  when: haproxy_standard_configuration
-
-- name: Upload Config Fragments | haproxy | deployment
-  template:
-    src: etc/haproxy/fragments.d/81-deployment
-    dest: /etc/haproxy/fragments.d/81-deployment
-  notify: Reload Service | haproxy
-  tags:
-    - configuration
-    - fragment-configuration
-    - haproxy
-  when: haproxy_autodeploy_passthrough_enabled
-
-- name: Upload Config Fragments | haproxy | https
-  template:
-    src: etc/haproxy/fragments.d/443-https
-    dest: /etc/haproxy/fragments.d/443-https
-  when: haproxy_ssl_enabled
-  notify: Reload Service | haproxy
+  when: item.when_condition
+  with_items:
+    - { path: 00-global, when_condition: yes }
+    - { path: 01-defaults, when_condition: yes }
+    - { path: 02-error-handling, when_condition: haproxy_error_handling_enabled }
+    - { path: 03-stats, when_condition: haproxy_stats_enabled }
+    - { path: 80-application, when_condition: haproxy_standard_configuration }
+    - { path: 81-deployment, when_condition: haproxy_autodeploy_passthrough_enabled }
+    - { path: 443-https, when_condition: haproxy_ssl_enabled }
   tags:
     - configuration
     - fragment-configuration
