@@ -15,6 +15,7 @@
     dest: "{{ haproxy_ssl_certificate_path }}{{ haproxy_ssl_certificate_name }}"
     owner: "{{ haproxy_user }}"
     mode: 0600
+  notify: Reload Service | haproxy
   tags:
     - configuration
     - ssl
