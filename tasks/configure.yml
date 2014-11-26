@@ -28,15 +28,15 @@
     src: "etc/haproxy/fragments.d/{{ item.path }}"
     dest: "/etc/haproxy/fragments.d/{{ item.path }}"
   notify: Reload Service | haproxy
-  when: "{{ item.when_condition }}"
+  when: "{{ item.when | default (True) }}"
   with_items:
-    - { path: 00-global, when_condition: yes }
-    - { path: 01-defaults, when_condition: yes }
-    - { path: 02-error-handling, when_condition: haproxy_error_handling_enabled }
-    - { path: 03-stats, when_condition: haproxy_stats_enabled }
-    - { path: 80-application, when_condition: haproxy_standard_configuration }
-    - { path: 81-deployment, when_condition: haproxy_autodeploy_passthrough_enabled }
-    - { path: 443-https, when_condition: haproxy_ssl_enabled }
+    - { path: 00-global }
+    - { path: 01-defaults }
+    - { path: 02-error-handling, when: haproxy_error_handling_enabled }
+    - { path: 03-stats, when: haproxy_stats_enabled }
+    - { path: 80-application, when: haproxy_standard_configuration }
+    - { path: 81-deployment, when: haproxy_autodeploy_passthrough_enabled }
+    - { path: 443-https, when: haproxy_ssl_enabled }
   tags:
     - configuration
     - fragment-configuration
