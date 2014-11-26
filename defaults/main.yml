@@ -28,7 +28,11 @@ haproxy_ssl_should_degrade_security_to_accomodate_old_browsers: no
 haproxy_ssl_redirect_http_to_https: no
 
 haproxy_perfect_forward_secrecy_enabled: no
+haproxy_has_load_balancer: "{% if environment_tier in ['production', 'staging'] %}yes{% endif %}"
 haproxy_standard_application: yes
+haproxy_standard_application_backend_name: "{{ project }}-application"
+haproxy_standard_application_backend_server_direct: "application{% if haproxy_has_load_balancer %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.teluswebteam.com{% if haproxy_ssl_enabled %}:80{% endif %}"
+haproxy_standard_application_backend_server_load_balancer: "application.{{ project }}-{{ environment_tier }}.teluswebteam.com{% if haproxy_ssl_enabled %}:80{% endif %}"
 
 haproxy_restricted_paths: no
 haproxy_allow_access_to_restricted_paths_from_ips:
