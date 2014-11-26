@@ -28,7 +28,7 @@
     src: "etc/haproxy/fragments.d/{{ item.path }}"
     dest: "/etc/haproxy/fragments.d/{{ item.path }}"
   notify: Reload Service | haproxy
-  when: item.when_condition
+  when: "{{ item.when_condition }}"
   with_items:
     - { path: 00-global, when_condition: yes }
     - { path: 01-defaults, when_condition: yes }
