@@ -1,7 +1,4 @@
 ---
-- name: Reload Service | monit
-  command: monit reload
-
 - name: Reload Service | haproxy
   monit:
     state: restarted
