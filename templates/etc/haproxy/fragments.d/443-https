@@ -14,4 +14,4 @@ frontend https-in
   http-request deny if restricted_path !allowed_ip
 {% endif %}
 
-  default_backend {{ project }}-application
+  default_backend {{ haproxy_standard_application_backend_name }}
