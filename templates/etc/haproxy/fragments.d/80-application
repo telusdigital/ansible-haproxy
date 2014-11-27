@@ -4,30 +4,4 @@ frontend http-in
   reqadd X-Forwarded-Proto:\ http
 
   default_backend {{ haproxy_standard_application_backend_name }}
-
-backend localhost
-  server local 127.0.0.1
-
-backend {{ haproxy_standard_application_backend_name }}
-{% if haproxy_ssl_redirect_http_to_https %}
-  redirect scheme https code 301 if !{ ssl_fc }
-{% endif %}
-
-{% if haproxy_restricted_paths is iterable %}
-{%   for restricted_path in haproxy_restricted_paths %}
-  acl restricted_path path_beg {{ restricted_path }}
-{%   endfor %}
-
-{%   for allowed_ip in haproxy_allow_access_to_restricted_paths_from_ips %}
-  acl allowed_ip src {{ allowed_ip }}
-{%   endfor %}
-
-  http-request deny if restricted_path !allowed_ip
-{% endif %}
-
-{% if haproxy_load_balancer_enabled %}
-  server application-load-balancer {{ haproxy_standard_application_backend_server_load_balancer }}
-{% endif %}
-
-  server application {{ haproxy_standard_application_backend_server_direct }}{% if haproxy_load_balancer_enabled %} disabled{% endif %}
 {% endif %}

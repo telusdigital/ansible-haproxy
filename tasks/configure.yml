@@ -37,6 +37,8 @@
     - { path: 80-application, when: haproxy_standard_configuration }
     - { path: 81-deployment, when: haproxy_autodeploy_passthrough_enabled }
     - { path: 443-https, when: haproxy_ssl_enabled }
+    - { path: 65536-backend-application }
+    - { path: 65537-backend-localhost }
   tags:
     - configuration
     - fragment-configuration
