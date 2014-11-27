@@ -1,5 +1,5 @@
 frontend https-in
-  bind :443 ssl crt {{ haproxy_ssl_certificate_path }}{{ haproxy_ssl_certificate_name }} {% if haproxy_ssl_ciphers %}ciphers {{ haproxy_ssl_ciphers }}{% endif %} {% if haproxy_perfect_forward_secrecy_enabled %}no-tls-tickets{%endif%}
+  bind :443 ssl crt {{ haproxy_ssl_certificate_path }} {% if haproxy_ssl_ciphers %}ciphers {{ haproxy_ssl_ciphers }}{% endif %} {% if haproxy_perfect_forward_secrecy_enabled %}no-tls-tickets{%endif%}
 
   reqadd X-Forwarded-Proto:\ https
 
