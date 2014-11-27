@@ -3,5 +3,5 @@ frontend http-in
   bind :80
   reqadd X-Forwarded-Proto:\ http
 
-  default_backend {{ haproxy_standard_application_backend_name }}
+  default_backend {{ haproxy_backend_name }}
 {% endif %}

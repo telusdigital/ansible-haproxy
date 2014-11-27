@@ -1,4 +1,4 @@
-backend {{ haproxy_standard_application_backend_name }}
+backend {{ haproxy_backend_name }}
 {% if haproxy_ssl_redirect_http_to_https %}
   redirect scheme https code 301 if !{ ssl_fc }
 {% endif %}
@@ -16,8 +16,8 @@ backend {{ haproxy_standard_application_backend_name }}
 {% endif %}
 
 {% if haproxy_load_balancer_enabled %}
-  server application-load-balancer {{ haproxy_standard_application_backend_server_load_balancer }}
+  server application-load-balancer {{ haproxy_backend_server_load_balancer }}
 {% endif %}
 
-  server application {{ haproxy_standard_application_backend_server_direct }}{% if haproxy_load_balancer_enabled %} disabled{% endif %}
+  server application {{ haproxy_backend_server_direct }}{% if haproxy_load_balancer_enabled %} disabled{% endif %}
   
