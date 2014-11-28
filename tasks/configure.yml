@@ -33,10 +33,10 @@
     - { path: 00-global }
     - { path: 01-defaults }
     - { path: 02-error-handling, when: haproxy_error_handling_enabled }
-    - { path: 03-stats, when: haproxy_stats_enabled }
-    - { path: 80-application, when: haproxy_standard_configuration }
-    - { path: 81-deployment, when: haproxy_autodeploy_passthrough_enabled }
-    - { path: 443-https, when: haproxy_ssl_enabled }
+    - { path: 03-stats,          when: haproxy_stats_enabled }
+    - { path: 80-application,    when: haproxy_standard_configuration }
+    - { path: 81-deployment,     when: haproxy_autodeploy_passthrough_enabled }
+    - { path: 443-https,         when: haproxy_ssl_enabled }
     - { path: 65536-backend-application }
     - { path: 65537-backend-localhost }
   tags:
