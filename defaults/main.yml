@@ -30,15 +30,15 @@ haproxy_ssl_disable_sslv3: yes
 haproxy_perfect_forward_secrecy_enabled: no
 haproxy_load_balancer_enabled: "{% if environment_tier in ['production', 'staging'] %}yes{% endif %}"
 haproxy_standard_application: yes
-haproxy_backend_server_name: "{{ project }}-application"
+haproxy_backend_name: "{{ project }}-application"
 haproxy_backend_server_port: 80
 haproxy_backend_server_direct: "application{% if haproxy_load_balancer_enabled %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.{{ domain }}{% if haproxy_ssl_enabled %}:{{ haproxy_backend_server_port }}{% endif %}"
 haproxy_backend_server_load_balancer: "application.{{ project }}-{{ environment_tier }}.{{ domain }}{% if haproxy_ssl_enabled %}:{{ haproxy_backend_server_port }}{% endif %}"
 
-# example ip 1.2.3.4 network = 1.2.3 
-haproxy_backend_server_network: no
-# example ip 1.2.3.4 - 1.2.3.128 address_range = 4,128
-haproxy_backend_server_address_range: no
+haproxy_backend_host_range_enabled: no
+haproxy_backend_network: 10.0.2
+haproxy_backend_host_range_start: 1
+haproxy_backend_host_range_end: 128
 
 haproxy_restricted_paths: no
 haproxy_allow_access_to_restricted_paths_from_ips:
