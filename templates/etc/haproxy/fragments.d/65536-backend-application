@@ -1,4 +1,4 @@
-backend {{ haproxy_backend_name }}
+backend {{ haproxy_backend_server_name }}
 {% if haproxy_ssl_redirect_http_to_https %}
   redirect scheme https code 301 if !{ ssl_fc }
 {% endif %}
@@ -20,4 +20,9 @@ backend {{ haproxy_backend_name }}
 {% endif %}
 
   server application {{ haproxy_backend_server_direct }}{% if haproxy_load_balancer_enabled %} disabled{% endif %}
-  
+
+{{% if haproxy_backend_server_address_range is iterable %}}
+  {% for ip in range(haproxy_backend_server_address_range)%}
+    server {{ ip }} {{ haproxy_backend_server_network }}.{{ ip }}:{{ haproxy_backend_port }} check
+  {% endfor %}
+{{% endif %}}

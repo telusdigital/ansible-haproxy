@@ -3,4 +3,4 @@ frontend https-in
 
   reqadd X-Forwarded-Proto:\ https
 
-  default_backend {{ haproxy_backend_name }}
+  default_backend {{ haproxy_backend_server_name }}
