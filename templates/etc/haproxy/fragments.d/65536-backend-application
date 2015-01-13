@@ -19,10 +19,10 @@ backend {{ haproxy_backend_server_name }}
   server application-load-balancer {{ haproxy_backend_server_load_balancer }}
 {% endif %}
 
-  server application {{ haproxy_backend_server_direct }}{% if haproxy_load_balancer_enabled %} disabled{% endif %}
-
 {{% if haproxy_backend_server_address_range is iterable %}}
   {% for ip in range(haproxy_backend_server_address_range)%}
-    server {{ ip }} {{ haproxy_backend_server_network }}.{{ ip }}:{{ haproxy_backend_port }} check
+  server {{ ip }} {{ haproxy_backend_server_network }}.{{ ip }}:{{ haproxy_backend_port }} check
   {% endfor %}
+{{% else %}}
+  server application {{ haproxy_backend_server_direct }}{% if haproxy_load_balancer_enabled %} disabled{% endif %}
 {{% endif %}}
