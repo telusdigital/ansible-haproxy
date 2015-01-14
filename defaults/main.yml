@@ -20,6 +20,7 @@ haproxy_stats_uri: /stats
 haproxy_stats_user: metrics
 haproxy_stats_password: ***REMOVED***
 
+haproxy_protocol: http
 haproxy_ssl_enabled: no
 haproxy_ssl_certificate_path: /data/www/ssl.crt
 haproxy_ssl_ciphers: EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
@@ -31,7 +32,6 @@ haproxy_perfect_forward_secrecy_enabled: no
 haproxy_load_balancer_enabled: "{% if environment_tier in ['production', 'staging'] %}yes{% endif %}"
 haproxy_standard_application: yes
 haproxy_backend_name: "{{ project }}-application"
-haproxy_protocol: http
 haproxy_backend_server_port: 80
 haproxy_frontend_port: 80
 haproxy_backend_server_direct: "application{% if haproxy_load_balancer_enabled %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.{{ domain }}{% if haproxy_ssl_enabled %}:{{ haproxy_backend_server_port }}{% endif %}"
