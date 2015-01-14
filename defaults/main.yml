@@ -31,7 +31,9 @@ haproxy_perfect_forward_secrecy_enabled: no
 haproxy_load_balancer_enabled: "{% if environment_tier in ['production', 'staging'] %}yes{% endif %}"
 haproxy_standard_application: yes
 haproxy_backend_name: "{{ project }}-application"
+haproxy_protocol: http
 haproxy_backend_server_port: 80
+haproxy_frontend_port: 80
 haproxy_backend_server_direct: "application{% if haproxy_load_balancer_enabled %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.{{ domain }}{% if haproxy_ssl_enabled %}:{{ haproxy_backend_server_port }}{% endif %}"
 haproxy_backend_server_load_balancer: "application.{{ project }}-{{ environment_tier }}.{{ domain }}{% if haproxy_ssl_enabled %}:{{ haproxy_backend_server_port }}{% endif %}"
 
