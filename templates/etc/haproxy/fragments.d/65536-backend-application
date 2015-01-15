@@ -19,10 +19,10 @@ backend {{ haproxy_backend_name }}
   server application-load-balancer {{ haproxy_backend_server_load_balancer }}
 {% endif %}
 
-{{% if haproxy_backend_host_range_enabled %}}
+{% if haproxy_backend_host_range_enabled %}
   {% for octet in range(haproxy_backend_host_range_start, haproxy_backend_host_range_end)%}
   server {{ haproxy_backend_network }}.{{ octet }} {{ haproxy_backend_network }}.{{ octet }}:{{ haproxy_backend_server_port }} check
   {% endfor %}
-{{% else %}}
+{% else %}
   server application {{ haproxy_backend_server_direct }}{% if haproxy_load_balancer_enabled %} disabled{% endif %}
-{{% endif %}}
+{% endif %}

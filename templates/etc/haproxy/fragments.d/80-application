@@ -1,9 +1,9 @@
 {% if haproxy_standard_application %}
 frontend {{ haproxy_protocol }}-in
   bind :{{ haproxy_frontend_port }}
-  {{% if haproxy_protocol == "http" %}}
+  {% if haproxy_protocol == "http" %}
   reqadd X-Forwarded-Proto:\ http
-  {{% endif %}}
+  {% endif %}
 
   default_backend {{ haproxy_backend_name }}
 {% endif %}
