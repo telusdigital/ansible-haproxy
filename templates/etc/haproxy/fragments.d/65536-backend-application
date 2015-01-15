@@ -21,7 +21,7 @@ backend {{ haproxy_backend_name }}
 
 {{% if haproxy_backend_host_range_enabled %}}
   {% for octet in range(haproxy_backend_host_range_start, haproxy_backend_host_range_end)%}
-  server {{ octet }} {{ haproxy_backend_network }}.{{ octet }}:{{ haproxy_backend_server_port }} check
+  server {{ haproxy_backend_network }}.{{ octet }} {{ haproxy_backend_network }}.{{ octet }}:{{ haproxy_backend_server_port }} check
   {% endfor %}
 {{% else %}}
   server application {{ haproxy_backend_server_direct }}{% if haproxy_load_balancer_enabled %} disabled{% endif %}
