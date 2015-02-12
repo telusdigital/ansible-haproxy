@@ -5,4 +5,3 @@ dependencies:
     repository_url: 'deb http://ppa.launchpad.net/vbernat/haproxy-1.5/ubuntu trusty main'
   - role: meta/monitor
     monitor_name: haproxy
-    monitor_pidfile: "{{ haproxy_pidfile_path }}"
