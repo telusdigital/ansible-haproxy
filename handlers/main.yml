@@ -1,9 +1,7 @@
 ---
 - name: Reload Service | haproxy
-  monit:
-    state: restarted
+  service:
+    state: reloaded
     name: haproxy
   tags:
-    - haproxy
-    - using-monit
     - disruptive
