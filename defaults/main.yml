@@ -17,13 +17,31 @@ haproxy_autodeploy_passthrough_enabled: no
 
 haproxy_stats_enabled: yes
 haproxy_stats_uri: /stats
-haproxy_stats_user: metrics
-haproxy_stats_password: ***REMOVED***
+haproxy_stats_user: "{{ mandatory }}"
+haproxy_stats_password: "{{ mandatory }}"
 
 haproxy_protocol: http
 haproxy_ssl_enabled: no
 haproxy_ssl_certificate_path: /data/www/ssl.crt
-haproxy_ssl_ciphers: EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
+haproxy_ssl_ciphers:
+  - EECDH+ECDSA+AESGCM
+  - EECDH+aRSA+AESGCM
+  - EECDH+ECDSA+SHA384
+  - EECDH+ECDSA+SHA256
+  - EECDH+aRSA+SHA384
+  - EECDH+aRSA+SHA256
+  - EECDH+aRSA+RC4
+  - "!RC4"
+  - "!aNULL"
+  - "!eNULL"
+  - "!LOW"
+  - "!3DES"
+  - "!MD5"
+  - "!EXP"
+  - "!PSK"
+  - "!SRP"
+  - "!DSS"
+
 haproxy_ssl_should_degrade_security_to_accomodate_old_browsers: no
 haproxy_ssl_redirect_http_to_https: no
 haproxy_ssl_disable_sslv3: yes
@@ -43,13 +61,4 @@ haproxy_backend_host_range_start: 1
 haproxy_backend_host_range_end: 128
 
 haproxy_restricted_paths: no
-haproxy_allow_access_to_restricted_paths_from_ips:
-  - ***REMOVED***
-  - ***REMOVED***
-  - ***REMOVED***
-  - ***REMOVED***
-  - ***REMOVED***
-  - ***REMOVED***
-  - ***REMOVED***
-  - ***REMOVED***
-  - ***REMOVED***
+haproxy_allow_access_to_restricted_paths_from_ips: []
