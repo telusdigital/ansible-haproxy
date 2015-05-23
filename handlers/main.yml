@@ -3,5 +3,3 @@
   service:
     state: reloaded
     name: haproxy
-  tags:
-    - disruptive
