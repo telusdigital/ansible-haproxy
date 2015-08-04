@@ -4,8 +4,11 @@ backend {{ haproxy_backend_name }}
   acl http_to_https_path path_beg {{ restricted_path }}
 {%   endfor %}
 {% endif %}
-{% if haproxy_ssl_redirect_http_to_https or haproxy_ssl_redirect_paths_http_to_https is iterable %}
+{% if haproxy_ssl_redirect_paths_http_to_https is iterable %}
   redirect scheme https code 301 if{% if haproxy_ssl_redirect_paths_http_to_https is iterable %} http_to_https_path{% endif %} !{ ssl_fc }
+{% endif %}
+{% if haproxy_ssl_redirect_http_to_https %}
+  redirect scheme https code 301 if !{ ssl_fc }
 {% endif %}
 
 {% if haproxy_restricted_paths is iterable %}
