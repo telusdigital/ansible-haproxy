@@ -44,6 +44,7 @@ haproxy_ssl_ciphers:
 
 haproxy_ssl_should_degrade_security_to_accomodate_old_browsers: no
 haproxy_ssl_redirect_http_to_https: no
+haproxy_ssl_redirect_paths_http_to_https: no
 haproxy_ssl_disable_sslv3: yes
 
 haproxy_perfect_forward_secrecy_enabled: no
