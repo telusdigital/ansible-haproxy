@@ -3,4 +3,4 @@ frontend deployment-in
   default_backend deployment
 
 backend deployment
-  server application-deployment application{%if environment_tier in ['staging', 'production'] %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.{{ domain }}:81
+  server application-deployment application{% if haproxy_load_balancer_enabled %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.{{ domain }}:81
