@@ -5,6 +5,7 @@
     - role: ansible-haproxy
       haproxy_stats_user: travis
       haproxy_stats_password: travis
+      haproxy_backend_server_direct: localhost
     - role: telusdigital.apt-repository
       repository_key: "0x505d97a41c61b9cd"
       repository_url: "deb http://ppa.launchpad.net/vbernat/haproxy-1.5/ubuntu {{ ansible_distribution_release }} main"
