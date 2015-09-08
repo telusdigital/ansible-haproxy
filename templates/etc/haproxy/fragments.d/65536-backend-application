@@ -23,6 +23,14 @@ backend {{ haproxy_backend_name }}
   http-request deny if restricted_path !allowed_ip
 {% endif %}
 
+{% if haproxy_restricted_paths_for_security is iterable %}
+{%   for restricted_path in haproxy_restricted_paths_for_security %}
+  acl restricted_path_for_security path_reg {{ restricted_path }}
+{%   endfor %}
+
+  http-request deny if restricted_path_for_security
+{% endif %}
+
 {% if haproxy_load_balancer_enabled %}
   server application-load-balancer {{ haproxy_backend_server_load_balancer }}
 {% endif %}
