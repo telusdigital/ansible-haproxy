@@ -25,7 +25,7 @@ backend {{ haproxy_backend_name }}
 
 {% if haproxy_restricted_paths_for_security is iterable %}
 {%   for restricted_path in haproxy_restricted_paths_for_security %}
-  acl restricted_path_for_security path_beg {{ restricted_path }}
+  acl restricted_path_for_security path_reg {{ restricted_path }}
 {%   endfor %}
 
   http-request deny if restricted_path_for_security
