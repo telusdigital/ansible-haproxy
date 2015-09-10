@@ -66,3 +66,4 @@ haproxy_allow_access_to_restricted_paths_from_ips: []
 
 haproxy_restricted_paths_for_security:
   - /.git/
+  - /uploads/
