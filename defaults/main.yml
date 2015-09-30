@@ -61,6 +61,9 @@ haproxy_backend_network: 10.0.2
 haproxy_backend_host_range_start: 1
 haproxy_backend_host_range_end: 128
 
+haproxy_auth_enabled: no
+haproxy_auth_username: digital
+
 haproxy_restricted_paths: no
 haproxy_allow_access_to_restricted_paths_from_ips: []
 
