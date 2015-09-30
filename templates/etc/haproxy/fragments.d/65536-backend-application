@@ -1,6 +1,6 @@
 {% if haproxy_auth_enabled %}
 userlist users
-  user {{ haproxy_auth_username }} insecure-password {{ haproxy_auth_username | mandatory }}
+  user {{ haproxy_auth_username }} insecure-password {{ haproxy_auth_password | mandatory }}
 {% endif %}
 
 backend {{ haproxy_backend_name }}
