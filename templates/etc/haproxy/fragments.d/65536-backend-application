@@ -1,4 +1,14 @@
+{% if haproxy_auth_enabled %}
+userlist users
+  user {{ haproxy_auth_username }} insecure-password {{ haproxy_auth_password | mandatory }}
+{% endif %}
+
 backend {{ haproxy_backend_name }}
+{% if haproxy_auth_enabled %}
+  acl AuthOkay http_auth(users)
+  http-request auth realm {{ project }} if !AuthOkay
+
+{% endif %}
 {% if haproxy_ssl_redirect_paths_http_to_https is iterable %}
 {%   for restricted_path in haproxy_ssl_redirect_paths_http_to_https %}
   acl http_to_https_path path_beg {{ restricted_path }}
