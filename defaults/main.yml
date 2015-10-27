@@ -22,7 +22,7 @@ haproxy_stats_password: "{{ mandatory }}"
 
 haproxy_protocol: http
 haproxy_ssl_enabled: no
-haproxy_ssl_certificate_path: /data/www/ssl.crt
+haproxy_ssl_certificate_path: /data/www/ssl.combined
 haproxy_ssl_ciphers:
   - EECDH+ECDSA+AESGCM
   - EECDH+aRSA+AESGCM
