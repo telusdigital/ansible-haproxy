@@ -13,7 +13,7 @@
     state: directory
     path: "{{ item }}"
     owner: "{{ haproxy_user }}"
-    group: "{{ haproxy_group }}"
+    group: staff
     mode: 0775
   with_items:
     - "{{ haproxy_runtime_root }}"
