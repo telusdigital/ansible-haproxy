@@ -30,7 +30,7 @@ backend {{ haproxy_backend_name }}
   acl allowed_ip src {{ allowed_ip }}
 {%   endfor %}
 
-  http-request deny if {{ restricted_path }} !allowed_ip
+  http-request deny if restricted_path !allowed_ip
 {% endif %}
 
 {% if haproxy_restricted_paths_for_security is iterable %}
