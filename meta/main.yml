@@ -2,7 +2,7 @@
 dependencies:
   - role: telusdigital.apt-repository
     repository_key: "0x505d97a41c61b9cd"
-    repository_url: "deb http://ppa.launchpad.net/vbernat/haproxy-1.5/ubuntu {{ ansible_distribution_release }} main"
+    repository_url: "deb http://ppa.launchpad.net/vbernat/haproxy-{{ haproxy_version }}/ubuntu {{ ansible_distribution_release }} main"
 galaxy_info:
   author: "Chris Olstrom"
   company: "TELUS digital"
