@@ -7,6 +7,7 @@
 
 Tunables
 --------
+* `haproxy_version` (integer) - Version number of haproxy to install
 * `haproxy_user` (string) - User to run haproxy as
 * `haproxy_group` (string) - Group to run haproxy as
 * `haproxy_error_handling_enabled` (boolean) - Handle errors?
