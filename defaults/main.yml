@@ -1,5 +1,5 @@
 ---
-haproxy_version: 1.5
+haproxy_version: 1.6
 
 haproxy_user: haproxy
 haproxy_group: haproxy
