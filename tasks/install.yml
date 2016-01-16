@@ -9,3 +9,10 @@
     - software-installation
     - using-apt
     - haproxy
+
+- name: Install DNS Reactor | wget
+  get_url:
+    url: "{{ haproxy_dns_reactor_download_source }}"
+    dest: /usr/bin/dnsreactor
+    mode: 0555
+  when: haproxy_dns_reactor_enabled
