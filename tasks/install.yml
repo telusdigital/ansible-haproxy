@@ -10,9 +10,9 @@
     - using-apt
     - haproxy
 
-- name: Install DNS Reactor | wget
-  get_url:
-    url: "{{ haproxy_dns_reactor_download_source }}"
-    dest: /usr/bin/dnsreactor
+- name: Install DNS Watch | Template
+  template:
+    src: etc/haproxy/dns-watch.sh
+    dest: /etc/haproxy/dns-watch.sh
     mode: 0555
-  when: haproxy_dns_reactor_enabled
+  when: haproxy_dns_watch_enabled

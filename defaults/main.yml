@@ -69,8 +69,7 @@ haproxy_auth_username: digital
 haproxy_restricted_paths: no
 haproxy_allow_access_to_restricted_paths_from_ips: []
 
-haproxy_dns_reactor_enabled: no
-haproxy_dns_reactor_download_source: https://s3.amazonaws.com/telusdigital-dns-reactor/bin/dns-reactor
+haproxy_dns_watch_enabled: no
 
 haproxy_restricted_paths_for_security:
   - /.git/
