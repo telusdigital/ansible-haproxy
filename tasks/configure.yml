@@ -8,21 +8,23 @@
   tags:
     - haproxy
 
-- name: Directories Exists
+- name: "Directory Exists | {{ haproxy_runtime_root }}"
   file:
     state: directory
-    path: "{{ item }}"
+    path: "{{ haproxy_runtime_root }}"
     owner: "{{ haproxy_user }}"
     group: "{{ haproxy_group }}"
     recurse: yes
     mode: 0775
-  with_items:
-    - "{{ haproxy_runtime_root }}"
-    - /etc/haproxy/fragments.d
-  tags:
-    - directory-structure
-    - runtime-data
-    - haproxy
+
+- name: "Directory Exists | /etc/haproxy/fragments.d"
+  file:
+    state: directory
+    path: "/etc/haproxy/fragments.d"
+    owner: "{{ haproxy_user }}"
+    group: "{{ haproxy_group }}"
+    recurse: yes
+    mode: 0775
 
 - name: Upload Config Fragments | haproxy
   template:
