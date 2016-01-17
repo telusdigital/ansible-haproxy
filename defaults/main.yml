@@ -70,6 +70,7 @@ haproxy_restricted_paths: no
 haproxy_allow_access_to_restricted_paths_from_ips: []
 
 haproxy_dns_watch_enabled: no
+haproxy_dns_watch_list: "{{ haproxy_backend_server_load_balancer }}"
 
 haproxy_restricted_paths_for_security:
   - /.git/

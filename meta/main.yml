@@ -7,7 +7,8 @@ dependencies:
     upstart_name: dns-watch
     upstart_description: "Upstart for DNS Watch"
     upstart_script:
-      - "sudo -u www-data /etc/haproxy/dns-watch.sh 10s application.public-mobile-next.teluswebteam.com 'service haproxy restart' 2>&1 >> /data/log/dns-watch/dns-watch.log"
+      - "sudo -u www-data /etc/haproxy/dns-watch.sh 10s {{ haproxy_dns_watch_list }} 'service haproxy restart' 2>&1 >> /data/log/dns-watch/dns-watch.log"
+    when: haproxy_dns_watch_enabled
 galaxy_info:
   author: "Chris Olstrom"
   company: "TELUS digital"
