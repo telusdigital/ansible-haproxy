@@ -6,7 +6,7 @@ dependencies:
   - role: telusdigital.upstart
     upstart_name: dns-watch
     upstart_description: "Upstart for DNS Watch"
-    upstart_script: "10s application.public-mobile-next.teluswebteam.com 'service haproxy restart' 2>&1 >> /data/log/dns-watch/dns-watch.log"
+    upstart_script: "\"10s application.public-mobile-next.teluswebteam.com 'service haproxy restart' 2>&1 >> /data/log/dns-watch/dns-watch.log\""
 galaxy_info:
   author: "Chris Olstrom"
   company: "TELUS digital"
