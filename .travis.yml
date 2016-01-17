@@ -36,3 +36,4 @@ script:
 
   # Make sure haproxy is installed.
   - haproxy -v
+  - ls -alh /etc/haproxy/fragments.d
