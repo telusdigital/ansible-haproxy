@@ -14,10 +14,11 @@
     path: "{{ item }}"
     owner: "{{ haproxy_user }}"
     group: "{{ haproxy_group }}"
+    recurse: yes
     mode: 0775
   with_items:
     - "{{ haproxy_runtime_root }}"
-    # - /etc/haproxy/fragments.d
+    - /etc/haproxy/fragments.d
   tags:
     - directory-structure
     - runtime-data
