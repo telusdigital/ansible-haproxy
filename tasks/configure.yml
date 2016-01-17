@@ -26,6 +26,10 @@
     mode: 0775
 
 - command: "ls -alh /etc/haproxy/fragments.d"
+  register: ls-command
+
+- debug:
+    var: ls-command
 
 - name: Upload Config Fragments | haproxy
   template:
