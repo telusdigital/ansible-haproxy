@@ -3,6 +3,9 @@ dependencies:
   - role: telusdigital.apt-repository
     repository_key: "0x505d97a41c61b9cd"
     repository_url: "deb http://ppa.launchpad.net/vbernat/haproxy-{{ haproxy_version }}/ubuntu {{ ansible_distribution_release }} main"
+  - role: telusdigital.upstart
+      upstart_name: dns-watch
+      upstart_description: "Upstart for DNS Watch"
 galaxy_info:
   author: "Chris Olstrom"
   company: "TELUS digital"
