@@ -23,8 +23,9 @@
     path: "/etc/haproxy/fragments.d"
     owner: "{{ haproxy_user }}"
     group: "{{ haproxy_group }}"
-    recurse: yes
     mode: 0775
+
+- command: "ls -alh /etc/haproxy/fragments.d"
 
 - name: Upload Config Fragments | haproxy
   template:
