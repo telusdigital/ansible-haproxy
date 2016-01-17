@@ -29,6 +29,8 @@
   template:
     src: "etc/haproxy/fragments.d/{{ item.path }}"
     dest: "/etc/haproxy/fragments.d/{{ item.path }}"
+    owner: root
+    group: staff
   notify: Reload Service | haproxy
   when: "{{ item.when | default (True) }}"
   with_items:
