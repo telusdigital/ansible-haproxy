@@ -1,7 +1,6 @@
 ---
-- hosts: localhost
-  remote_user: root
-  sudo: yes
+- connection: local
+  hosts: localhost
   roles:
     - role: ansible-haproxy
     # - role: telusdigital.apt-repository
