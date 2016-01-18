@@ -1,4 +1,6 @@
 ---
+sudo: required
+dist: trusty
 language: python
 python: "2.7"
 
@@ -10,7 +12,7 @@ before_install:
 
 install:
   # Install Ansible.
-  - pip install ansible
+  - pip install 'ansible<2'
 
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
@@ -34,3 +36,9 @@ script:
 
   # Make sure haproxy is installed.
   - haproxy -v
+
+notifications:
+  slack:
+    secure: Y5cPZ3YWKvfncThPFIi4H3fmp4gYpyUz/q/XS8mSBT/LAF51O60VnFExIc23+U41wdG+YMgZBt4bOIdt0poWxHAjP8tytztDeAC/UAH7BjBatt4WFuJ8DMln854dbiFT681abva6JXl8nfC9BfOlmYDbPKnFQFig8AF7Jir5MW7Cy57Lut03IGBYLCQcnX2bm6PwIv7mD8k0uXr9d0MCmQSkzBYDyLj37TjAcuuVBRp4Ay6CuxHgB9QoO/xDWCVGmXQR6i3xcJMqLm1mwkvj5xRRJzJMcYmZos6Yyk/YnFx1+tu6cclTsq+fxMc0wWfRf+Oyha+0FROHFD+x6p7Nnsp8po44a7q/iIOBsOhDojvQaree07eE4xvCZ94q7ZalqnXLilxxcl/Z7QuBmhuYqDe4aeFgGYhfKrBCkw/pm5YwISc+p2J3fgMe/5Bvg1tN/9fQ2T0iVslep8eaXrUPupfyatXjqxvBS3pT9shwxMD/ir/SuT8FnFmrBsr5EIW+ozpEI4jspvOCJkXvDppg3uOF5jl0fDT2zpOZDDurIWodln6PZOwG5wHmZwk69mBi8W8ZBwl5MKwQvEHJZqGriYf63TgGmXpK/GyQpinQWGa0IVicUrAt6QhKRxa1KuWuPdw3yTj51Wg3c/5YELb643lygS17eb+bxhYxh5r/Jhk=
+
+
