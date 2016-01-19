@@ -6,3 +6,6 @@
   roles:
     # name of role to test
     - role: ansible-haproxy
+      haproxy_stats_password: random-dumb-pass
+      project: travis
+      environment_tier: development
