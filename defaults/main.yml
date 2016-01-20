@@ -1,5 +1,5 @@
 ---
-haproxy_version: 1.5
+haproxy_version: 1.6
 
 haproxy_user: haproxy
 haproxy_group: haproxy
@@ -68,6 +68,9 @@ haproxy_auth_username: digital
 
 haproxy_restricted_paths: no
 haproxy_allow_access_to_restricted_paths_from_ips: []
+
+haproxy_dns_watch_enabled: no
+haproxy_dns_watch_list: "application.{{ project }}-{{ environment_tier }}.{{ domain }}"
 
 haproxy_restricted_paths_for_security:
   - /.git/
