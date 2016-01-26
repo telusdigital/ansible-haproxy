@@ -11,6 +11,8 @@ provisioner:
   hosts: test-kitchen
   # list ansible galaxy requirements from meta/main.yml
   requirements_path: requirements.yml
+  # pin the ansible version
+  ansible_version: 1.9.4
 
 
 platforms:

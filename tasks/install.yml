@@ -9,3 +9,10 @@
     - software-installation
     - using-apt
     - haproxy
+
+- name: Install DNS Watch | Template
+  template:
+    src: etc/haproxy/dns-watch.sh
+    dest: /etc/haproxy/dns-watch.sh
+    mode: 0555
+  when: haproxy_dns_watch_enabled
