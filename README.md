@@ -33,7 +33,7 @@ Options that weaken HTTPS have been removed from this playbook, including (at le
 * `haproxy_ssl_certificate_path` (string) - Path to SSL certificate
 * `haproxy_ssl_ciphers` (list) - Ranked set of acceptable ciphers
 * `haproxy_ssl_redirect_http_to_https` (boolean) - Redirect HTTP to HTTPS
-* `haproxy_load_balancer_enabled` (boolean) - Adjust backend names to accomodate ELBs from telusdigital.infrastructure
+* `haproxy_load_balancer_enabled` (boolean) - Adjust backend names to accomodate ELBs from aws-infrastructure
 * `haproxy_standard_application` (boolean) - Is this a typical application?
 * `haproxy_backend_name` (string) - Name for the backend.
 * `haproxy_backend_server_port` (integer) - Port for backend.
