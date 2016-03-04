@@ -42,7 +42,6 @@ haproxy_ssl_ciphers:
   - "!SRP"
   - "!DSS"
 
-haproxy_ssl_should_degrade_security_to_accomodate_old_browsers: no
 haproxy_ssl_redirect_http_to_https: no
 haproxy_ssl_redirect_paths_http_to_https: no
 

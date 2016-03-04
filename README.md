@@ -24,7 +24,6 @@
 * `haproxy_ssl_enabled` (boolean) - Enable SSL handling?
 * `haproxy_ssl_certificate_path` (string) - Path to SSL certificate
 * `haproxy_ssl_ciphers` (list) - Ranked set of acceptable ciphers
-* `haproxy_ssl_should_degrade_security_to_accomodate_old_browsers` (boolean) - Compromise security to support older browsers?
 * `haproxy_ssl_redirect_http_to_https` (boolean) - Redirect HTTP to HTTPS
 * `haproxy_load_balancer_enabled` (boolean) - Adjust backend names to accomodate ELBs from telusdigital.infrastructure
 * `haproxy_standard_application` (boolean) - Is this a typical application?
