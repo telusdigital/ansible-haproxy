@@ -27,7 +27,7 @@
   template:
     src: "etc/haproxy/fragments.d/{{ item.path }}"
     dest: "/etc/haproxy/fragments.d/{{ item.path }}"
-  notify: service | haproxy | reload
+  notify: service | haproxy | reloaded
   when: "{{ item.when | default (True) }}"
   with_items:
     - { path: 00-global }
