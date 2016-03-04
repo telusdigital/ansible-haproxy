@@ -11,6 +11,7 @@ dependencies:
     when: haproxy_dns_watch_enabled
 galaxy_info:
   author: "Chris Olstrom"
+  company: "TELUS digital"
   description: "The Reliable, High Performance TCP/HTTP Load Balancer"
   license: MIT
   platforms:
