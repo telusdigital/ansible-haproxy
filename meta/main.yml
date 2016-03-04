@@ -17,7 +17,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-      - precise
-      - trusty
+        - precise
+        - trusty
   categories:
     - web
