@@ -1,5 +1,20 @@
 ---
-- name: Reload Service | haproxy
+- name: service | haproxy | started
   service:
-    state: reloaded
     name: haproxy
+    state: started
+
+- name: service | haproxy | stopped
+  service:
+    name: haproxy
+    state: stopped
+
+- name: service | haproxy | restarted
+  service:
+    name: haproxy
+    state: restarted
+
+- name: service | haproxy | reloaded
+  service:
+    name: haproxy
+    state: reloaded
