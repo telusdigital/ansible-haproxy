@@ -14,7 +14,6 @@ Tunables
 * `haproxy_attack_mitigation_enabled` (boolean) - Aggressively favour resiliency over compatibility?
 * `haproxy_assumes_backend_is_dead_after` (integer) - If a backend has not accepted the connection in this long, it's probably dead.
 * `haproxy_runtime_root` (string) - Directory for runtime data
-* `haproxy_pidfile_path` (string) - Path for pidfile
 * `haproxy_stats_socket_path` (string) - Path for socket
 * `haproxy_chroot_path` (string) - Directory haproxy should sandbox itself into
 * `haproxy_standard_configuration` (boolean) - Use the config generators?
