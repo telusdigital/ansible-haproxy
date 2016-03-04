@@ -5,6 +5,14 @@
 [![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
 [![Status](https://travis-ci.org/colstrom/ansible-haproxy.svg?branch=master)](#)
 
+## Important!
+
+Options that weaken HTTPS have been removed from this playbook, including (at least):
+  * Configured for Perfect Forward Secrecy.
+  * TLS Tickets are disabled.
+  * SSLv3 is disabled.
+  * Weak ciphers required to support old browsers have been disabled.
+
 ## Tunables
 * `haproxy_version` (integer) - Version number of haproxy to install
 * `haproxy_user` (string) - User to run haproxy as
