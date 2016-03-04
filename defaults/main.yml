@@ -9,7 +9,6 @@ haproxy_attack_mitigation_enabled: no
 haproxy_assumes_backend_is_dead_after: 4
 
 haproxy_runtime_root: "{{ runtime_root | default('/var/run') }}/haproxy"
-haproxy_stats_socket_path: "{{ haproxy_runtime_root }}/stats.sock"
 
 haproxy_chroot_path: /var/lib/haproxy
 
