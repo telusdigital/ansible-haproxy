@@ -49,7 +49,7 @@ Options that weaken HTTPS have been removed from this playbook, including (at le
 
 ## Dependencies
 
-* [telusdigital.apt-repository](https://github.com/telusdigital/ansible-apt-repository/)
+* [colstrom.apt-repository](https://github.com/colstrom/ansible-apt-repository/)
 
 ## Example Playbook
     - hosts: servers
