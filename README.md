@@ -3,10 +3,9 @@
 [haproxy](http://www.haproxy.org/) - The Reliable, High Performance TCP/HTTP Load Balancer
 
 [![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
-[![Status](https://travis-ci.org/telusdigital/ansible-haproxy.svg?branch=master)](#)
+[![Status](https://travis-ci.org/colstrom/ansible-haproxy.svg?branch=master)](#)
 
-Tunables
---------
+## Tunables
 * `haproxy_version` (integer) - Version number of haproxy to install
 * `haproxy_user` (string) - User to run haproxy as
 * `haproxy_group` (string) - Group to run haproxy as
@@ -43,12 +42,11 @@ Tunables
 * `haproxy_restricted_paths` (list) - Paths to restrict access to
 * `haproxy_allow_access_to_restricted_paths_from_ips` (list) - IPs to allow access to restricted paths
 
-Dependencies
-------------
+## Dependencies
+
 * [telusdigital.apt-repository](https://github.com/telusdigital/ansible-apt-repository/)
 
-Example Playbook
-----------------
+## Example Playbook
     - hosts: servers
       roles:
          - role: telusdigital.haproxy
@@ -57,12 +55,12 @@ Example Playbook
            haproxy_backend_host_range_start: 20
            haproxy_backend_host_range_end: 40
 
-License
--------
+## License
+
 [MIT](https://tldrlegal.com/license/mit-license)
 
-Contributors
-------------
+## Contributors
+
 * [Chris Olstrom](https://colstrom.github.io/) | [e-mail](mailto:chris@olstrom.com) | [Twitter](https://twitter.com/ChrisOlstrom)
 * Steven Harradine
 * Aaron Pederson
