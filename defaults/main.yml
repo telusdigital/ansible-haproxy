@@ -46,7 +46,6 @@ haproxy_ssl_should_degrade_security_to_accomodate_old_browsers: no
 haproxy_ssl_redirect_http_to_https: no
 haproxy_ssl_redirect_paths_http_to_https: no
 
-haproxy_perfect_forward_secrecy_enabled: no
 haproxy_load_balancer_enabled: "{% if environment_tier in ['production', 'staging'] %}yes{% endif %}"
 haproxy_standard_application: yes
 haproxy_backend_name: "{{ project }}-application"
