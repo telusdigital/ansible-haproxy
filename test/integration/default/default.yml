@@ -8,4 +8,6 @@
     - role: ansible-haproxy
       haproxy_stats_password: random-dumb-pass
       haproxy_stats_user: random-user
-
+      project: travis
+      environment_tier: development
+      domain: domain.com
