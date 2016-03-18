@@ -44,6 +44,7 @@ Tunables
 * `haproxy_backend_host_range_end` (integer) - End of range
 * `haproxy_restricted_paths` (list) - Paths to restrict access to
 * `haproxy_allow_access_to_restricted_paths_from_ips` (list) - IPs to allow access to restricted paths
+* `haproxy_tune_ssl_default_dh_param` (integer) - Sets the maximum size of the Diffie-Hellman parameters used for generating the ephemeral/temporary Diffie-Hellman key
 
 Dependencies
 ------------

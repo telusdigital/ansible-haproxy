@@ -74,3 +74,5 @@ haproxy_dns_watch_list: "application.{{ project }}-{{ environment_tier }}.{{ dom
 
 haproxy_restricted_paths_for_security:
   - /.git/
+
+haproxy_tune_ssl_default_dh_param: 2048
