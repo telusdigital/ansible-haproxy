@@ -13,7 +13,7 @@
     state: directory
     path: "{{ item }}"
     owner: "{{ haproxy_user }}"
-    group: "{{ haproxy_group }}"
+    group: staff
     mode: 0775
   with_items:
     - "{{ haproxy_runtime_root }}"
@@ -27,7 +27,7 @@
   template:
     src: "etc/haproxy/fragments.d/{{ item.path }}"
     dest: "/etc/haproxy/fragments.d/{{ item.path }}"
-  notify: Reload Service | haproxy
+  notify: service | haproxy | reloaded
   when: "{{ item.when | default (True) }}"
   with_items:
     - { path: 00-global }
