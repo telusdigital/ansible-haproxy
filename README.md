@@ -3,7 +3,7 @@
 [haproxy](http://www.haproxy.org/) - The Reliable, High Performance TCP/HTTP Load Balancer
 
 [![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
-[![Status](https://travis-ci.org/colstrom/ansible-haproxy.svg?branch=master)](#)
+[![Status](https://travis-ci.org/telusdigital/ansible-haproxy.svg?branch=master)](#)
 
 ## Important!
 
@@ -50,12 +50,12 @@ Options that weaken HTTPS have been removed from this playbook, including (at le
 
 ## Dependencies
 
-* [colstrom.apt-repository](https://github.com/colstrom/ansible-apt-repository/)
+* [telusdigital.apt-repository](https://github.com/telusdigital/ansible-apt-repository/)
 
 ## Example Playbook
     - hosts: servers
       roles:
-         - role: colstrom.haproxy
+         - role: telusdigital.haproxy
            haproxy_backend_host_range_enabled: yes
            haproxy_backend_network: 10.0.2
            haproxy_backend_host_range_start: 20
