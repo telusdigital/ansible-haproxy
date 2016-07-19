@@ -1,6 +1,7 @@
 frontend https-in
   bind :443 ssl crt {{ haproxy_ssl_certificate_path }} {% if haproxy_ssl_ciphers %}ciphers {{ haproxy_ssl_ciphers | join(',') }}{% endif %} no-tls-tickets no-sslv3
 
+  http-request del-header Proxy
   reqadd X-Forwarded-Proto:\ https
 
   default_backend {{ haproxy_backend_name }}

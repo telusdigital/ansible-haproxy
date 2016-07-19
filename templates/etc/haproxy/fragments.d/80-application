@@ -1,6 +1,7 @@
 {% if haproxy_standard_application %}
 frontend {{ haproxy_protocol }}-in
   bind :{{ haproxy_frontend_port }}
+  http-request del-header Proxy
   {% if haproxy_protocol == "http" %}
   reqadd X-Forwarded-Proto:\ http
   {% endif %}
