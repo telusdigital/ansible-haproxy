@@ -1,5 +1,6 @@
 frontend deployment-in
   bind :81
+  http-request del-header Proxy
   default_backend deployment
 
 backend deployment
