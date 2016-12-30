@@ -71,3 +71,5 @@ haproxy_restricted_paths_for_security:
   - /.git/
 
 haproxy_tune_ssl_default_dh_param: 2048
+
+haproxy_deployment_backend: "application{% if haproxy_load_balancer_enabled %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.{{ domain }}:81"
