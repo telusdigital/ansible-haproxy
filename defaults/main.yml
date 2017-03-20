@@ -30,7 +30,6 @@ haproxy_ssl_ciphers:
   - EECDH+ECDSA+SHA256
   - EECDH+aRSA+SHA384
   - EECDH+aRSA+SHA256
-  - EECDH+aRSA+RC4
   - "!RC4"
   - "!aNULL"
   - "!eNULL"
