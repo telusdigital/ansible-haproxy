@@ -15,7 +15,7 @@ haproxy_chroot_path: /var/lib/haproxy
 haproxy_standard_configuration: yes
 haproxy_autodeploy_passthrough_enabled: no
 
-haproxy_stats_enabled: yes
+haproxy_stats_enabled: no
 haproxy_stats_uri: /stats
 haproxy_stats_user: "{{ mandatory }}"
 haproxy_stats_password: "{{ mandatory }}"
