@@ -44,6 +44,22 @@
     - fragment-configuration
     - haproxy
 
+- name: Remove Config Fragments where needed | haproxy
+  file:
+    path: "/etc/haproxy/fragments.d/{{ item.path }}"
+    state: absent
+  when: "{{ item.when | default (True) }}"
+  with_items:
+    - { path: 02-error-handling, when: not haproxy_error_handling_enabled }
+    - { path: 03-stats,          when: not haproxy_stats_enabled }
+    - { path: 80-application,    when: not haproxy_standard_configuration }
+    - { path: 81-deployment,     when: not haproxy_autodeploy_passthrough_enabled }
+    - { path: 443-https,         when: not haproxy_ssl_enabled }
+  tags:
+    - configuration
+    - fragment-configuration
+    - haproxy
+
 - name: Assemble Config Fragments | haproxy
   assemble:
     src: /etc/haproxy/fragments.d

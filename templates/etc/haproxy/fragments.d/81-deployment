@@ -1,6 +1,7 @@
 frontend deployment-in
   bind :81
+  http-request del-header Proxy
   default_backend deployment
 
 backend deployment
-  server application-deployment application{% if haproxy_load_balancer_enabled %}-direct{% endif %}.{{ project }}-{{ environment_tier }}.{{ domain }}:81
+  server application-deployment {{ haproxy_deployment_backend }}
