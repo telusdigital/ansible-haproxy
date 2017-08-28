@@ -1,11 +1,9 @@
 ---
 dependencies:
   - role: telusdigital.apt-repository
-    name: telusdigital.apt-repository
     repository_key: "0x505d97a41c61b9cd"
     repository_url: "deb http://ppa.launchpad.net/vbernat/haproxy-{{ haproxy_version }}/ubuntu {{ ansible_distribution_release }} main"
   - role: telusdigital.upstart
-    name: telusdigital.upstart
     upstart_name: dns-watch
     upstart_description: "Upstart for DNS Watch"
     upstart_script:
@@ -16,11 +14,13 @@ galaxy_info:
   author: "Chris Olstrom"
   company: "TELUS digital"
   description: "The Reliable, High Performance TCP/HTTP Load Balancer"
+  issue_tracker_url: https://github.com/telusdigital/ansible-haproxy/issues
   license: MIT
+  min_ansible_version: 1.9
   platforms:
     - name: Ubuntu
       versions:
       - precise
       - trusty
-  categories:
+  galaxy_tags:
     - web
